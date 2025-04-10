@@ -1,3 +1,17 @@
+import sys
+import subprocess
+import os
+
+def install_requirements():
+    req_file = "requirements.txt"
+    if os.path.exists(req_file):
+        print("📦 Installing dependencies from requirements.txt...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", req_file])
+    else:
+        print("❌ File requirements.txt not found!")
+
+install_requirements()
+
 import random
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -7,7 +21,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 from dotenv import load_dotenv
-import os
+
 import pandas as pd
 
 load_dotenv(dotenv_path="config.env")
